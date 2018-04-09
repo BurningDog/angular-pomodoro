@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   countdown = 0;
   INITIAL_SECONDS = 25 * 60;
   secondsLeft = this.INITIAL_SECONDS;
-  interval: NodeJS.Timer;
+  interval;
   pomodoroState: PomodoroState = PomodoroState.STOPPED;
 
   ngOnInit(): void {
