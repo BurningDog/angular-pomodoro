@@ -6,7 +6,7 @@
 
   <mat-card>
     <mat-card-content>
-      <span id="time">{{seconds}}</span>
+      <span id="time">{{secondsLeft | time}}</span>
       <mat-progress-spinner style="margin:auto" diameter="400" mode="determinate" [value]="countdown" aria-label="Pomodoro countdown"></mat-progress-spinner>
 
       <div class="row">

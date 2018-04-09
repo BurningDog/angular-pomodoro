@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 /** Modules */
 import { MatButtonModule, MatProgressSpinnerModule, MatToolbarModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
+import { TimePipe } from './time.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TimePipe
   ],
   imports: [
     BrowserModule,
