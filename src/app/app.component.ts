@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PomodoroState } from './pomodoro-state.enum';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,13 @@ export class AppComponent implements OnInit {
   INITIAL_SECONDS = 25 * 60;
   secondsLeft = this.INITIAL_SECONDS;
   interval: NodeJS.Timer;
+  pomodoroState: PomodoroState = PomodoroState.STOPPED;
 
   ngOnInit(): void {
   }
 
   start() {
+    this.pomodoroState = PomodoroState.IN_PROGRESS;
     this.interval = setInterval(() => {
       this.secondsLeft--;
       this.countdown = this.calculatePercentageLeft(this.secondsLeft);
@@ -35,13 +38,26 @@ export class AppComponent implements OnInit {
   }
 
   pause() {
+    this.pomodoroState = PomodoroState.PAUSED;
     clearInterval(this.interval);
   }
 
   reset() {
+    this.pomodoroState = PomodoroState.STOPPED;
     this.countdown = 0;
     this.secondsLeft = this.INITIAL_SECONDS;
     clearInterval(this.interval);
   }
 
+  isStoppedOrIsPaused(): boolean {
+    return (this.pomodoroState === PomodoroState.STOPPED) || (this.pomodoroState === PomodoroState.PAUSED);
+  }
+
+  isNotPaused(): boolean {
+    return (this.pomodoroState !== PomodoroState.PAUSED) && (this.pomodoroState !== PomodoroState.STOPPED);
+  }
+
+  hasStarted(): boolean {
+    return this.pomodoroState !== PomodoroState.STOPPED;
+  }
 }
