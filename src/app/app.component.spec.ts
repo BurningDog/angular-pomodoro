@@ -38,4 +38,23 @@ describe('AppComponent', () => {
   }));
 */
 
+  it('should calculate the time left as a percentage', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const component = fixture.debugElement.componentInstance;
+    let actual = component.calculatePercentageLeft(0);
+    expect(actual).toBe(100);
+
+    actual = component.calculatePercentageLeft(25 * 60 / 2);
+    expect(actual).toBe(50);
+
+    actual = component.calculatePercentageLeft(25 * 60);
+    expect(actual).toBe(0);
+
+    actual = component.calculatePercentageLeft(25 * 60 / 4);
+    expect(actual).toBe(75);
+
+    actual = component.calculatePercentageLeft((25 * 60 / 4) * 3);
+    expect(actual).toBe(25);
+  });
+
 });
