@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
       const pomodoroHasEnded = this.secondsLeft < 0;
       if (pomodoroHasEnded) {
         this.reset();
+        this.notifyUser();
       }
     }, 1000);
   }
@@ -59,5 +60,18 @@ export class AppComponent implements OnInit {
 
   hasStarted(): boolean {
     return this.pomodoroState !== PomodoroState.STOPPED;
+  }
+
+  notifyUser() {
+    // Let's check if the browser supports notifications
+    if (!('Notification' in window)) {
+      alert('This browser does not support desktop notification');
+    } else {
+      Notification.requestPermission(function (permission) {
+        if (permission === 'granted') {
+          const notification = new Notification('Pomodoro completed!', );
+        }
+      });
+    }
   }
 }

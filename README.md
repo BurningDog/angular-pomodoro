@@ -1,5 +1,14 @@
 # Pomodoro
 
+A very simple Pomodoro timer (25 minutes per Pomodoro) built in Angular 5 and Angular Material.
+
+# Background
+
+I used to use a free Pomodoro app for Mac but can't remember what it's called (and don't think it's free any more).
+So I decided to build my own.
+
+# Angular CLI
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
 ## Development server
