@@ -7,11 +7,13 @@ import { AppComponent } from './app.component';
 import { MatButtonModule, MatProgressSpinnerModule, MatToolbarModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { TimePipe } from './time.pipe';
+import { CenterElDirective } from './center-el.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TimePipe
+    TimePipe,
+    CenterElDirective
   ],
   imports: [
     BrowserModule,

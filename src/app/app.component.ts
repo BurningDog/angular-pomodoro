@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   interval;
   pomodoroState: PomodoroState = PomodoroState.STOPPED;
 
+  constructor() { }
+
   ngOnInit(): void {
   }
 
@@ -23,7 +25,7 @@ export class AppComponent implements OnInit {
       this.countdown = this.calculatePercentageLeft(this.secondsLeft);
       const pomodoroHasEnded = this.secondsLeft < 0;
       if (pomodoroHasEnded) {
-        this.reset();
+        this.pomodoroState = PomodoroState.ENDED;
         this.notifyUser();
       }
     }, 1000);
@@ -55,7 +57,9 @@ export class AppComponent implements OnInit {
   }
 
   isNotPaused(): boolean {
-    return (this.pomodoroState !== PomodoroState.PAUSED) && (this.pomodoroState !== PomodoroState.STOPPED);
+    return (this.pomodoroState !== PomodoroState.PAUSED) &&
+           (this.pomodoroState !== PomodoroState.STOPPED) &&
+           (this.pomodoroState !== PomodoroState.ENDED);
   }
 
   hasStarted(): boolean {
