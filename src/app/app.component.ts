@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   secondsLeft = this.INITIAL_SECONDS;
   interval;
   pomodoroState: PomodoroState = PomodoroState.STOPPED;
+  pomodoroName = '';
 
   constructor() { }
 
@@ -81,7 +82,7 @@ export class AppComponent implements OnInit {
       const _this = this;
       Notification.requestPermission(permission => {
         if (permission === 'granted') {
-          _this.spawnNotification('', 'favicon.ico', 'Pomodoro complete!');
+          _this.spawnNotification(_this.pomodoroName, 'favicon.ico', 'Pomodoro complete!');
         }
       });
     }

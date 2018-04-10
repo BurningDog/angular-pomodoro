@@ -1,17 +1,15 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { MatButtonModule, MatProgressSpinnerModule, MatToolbarModule } from '@angular/material';
-import { MatCardModule } from '@angular/material/card';
 import { TimePipe } from './time.pipe';
+import { FormsModule } from '@angular/forms';
+import { MaterialModule } from './material-module/material.module';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        MatButtonModule,
-        MatCardModule,
-        MatProgressSpinnerModule,
-        MatToolbarModule
+        FormsModule,
+        MaterialModule
     ],
       declarations: [
         AppComponent,

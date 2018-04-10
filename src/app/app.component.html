@@ -6,6 +6,15 @@
 
   <mat-card>
     <mat-card-content>
+      <form #f="ngForm">
+        <mat-form-field style="min-width:400px">
+          <input matInput
+                 name="pomodoroName"
+                 placeholder="I am focussing on..."
+                 [(ngModel)]="pomodoroName">
+        </mat-form-field>
+      </form>
+
       <span appCenterEl id="time">{{secondsLeft | time}}</span>
       <mat-progress-spinner style="margin:auto" diameter="400" mode="determinate" [value]="countdown" aria-label="Pomodoro countdown"></mat-progress-spinner>
 

@@ -4,10 +4,10 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 /** Modules */
-import { MatButtonModule, MatProgressSpinnerModule, MatToolbarModule } from '@angular/material';
-import { MatCardModule } from '@angular/material/card';
 import { TimePipe } from './time.pipe';
 import { CenterElDirective } from './center-el.directive';
+import { FormsModule } from '@angular/forms';
+import { MaterialModule } from './material-module/material.module';
 
 @NgModule({
   declarations: [
@@ -17,10 +17,8 @@ import { CenterElDirective } from './center-el.directive';
   ],
   imports: [
     BrowserModule,
-    MatButtonModule,
-    MatCardModule,
-    MatProgressSpinnerModule,
-    MatToolbarModule
+    FormsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]
