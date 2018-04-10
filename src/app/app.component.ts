@@ -16,6 +16,12 @@ export class AppComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    if (!('Notification' in window)) {
+      alert('This browser does not support desktop notification');
+    } else {
+      // Ask for permission to send notifications
+      Notification.requestPermission();
+    }
   }
 
   start() {
@@ -27,6 +33,7 @@ export class AppComponent implements OnInit {
       if (pomodoroHasEnded) {
         this.pomodoroState = PomodoroState.ENDED;
         this.notifyUser();
+        clearInterval(this.interval);
       }
     }, 1000);
   }
@@ -71,11 +78,20 @@ export class AppComponent implements OnInit {
     if (!('Notification' in window)) {
       alert('This browser does not support desktop notification');
     } else {
-      Notification.requestPermission(function (permission) {
+      const _this = this;
+      Notification.requestPermission(permission => {
         if (permission === 'granted') {
-          const notification = new Notification('Pomodoro completed!', );
+          _this.spawnNotification('', 'favicon.ico', 'Pomodoro complete!');
         }
       });
     }
+  }
+
+  spawnNotification(body, icon, title) {
+    const options = {
+        body: body,
+        icon: icon
+    };
+    const n = new Notification(title, options);
   }
 }
